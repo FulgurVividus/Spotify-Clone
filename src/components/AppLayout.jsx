@@ -3,8 +3,6 @@ import Header from "./home/Header";
 import Sidebar from "./home/Sidebar";
 
 function AppLayout() {
-  function collapse() {}
-
   return (
     <div className="flex h-screen gap-4 p-4">
       <div className="flex h-full w-auto flex-col gap-5">
