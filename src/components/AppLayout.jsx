@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./home/Header";
 import Sidebar from "./home/Sidebar";
+import HomeHeader from "./home/HomeHeader";
 
 function AppLayout() {
   return (
@@ -10,7 +11,8 @@ function AppLayout() {
         <Sidebar />
       </div>
 
-      <main className="w-full rounded-lg bg-neutral-900 p-6">
+      <main className="flex w-full flex-col gap-10 rounded-lg bg-neutral-900 p-2">
+        <HomeHeader />
         <Outlet />
       </main>
     </div>
