@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .home-header-btn {
+    @apply rounded-full bg-black text-4xl text-white duration-300 hover:opacity-65;
+  }
+}
