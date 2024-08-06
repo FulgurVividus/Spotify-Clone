@@ -16,7 +16,7 @@ function ErrorPage() {
             Something went wrong, please try again or press the button.
           </p>
           <button
-            className="rounded-xl border-none bg-green-800 p-5 capitalize shadow-2xl shadow-gray-300/90 outline-none duration-300 hover:bg-green-700 hover:text-black"
+            className="rounded-xl border-none bg-green-800 p-5 capitalize shadow-xl shadow-gray-300/90 outline-none duration-300 hover:bg-green-700 hover:text-black"
             onClick={goHome}
           >
             go home
