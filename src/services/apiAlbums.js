@@ -1,19 +1,10 @@
-import { API_KEY } from "./config";
+export async function getAlbums() {
+  const res = await fetch(`https://api.music.apple.com/v1/catalog/albums`);
 
-async function getAlbums() {
-  const response = await fetch(
-    `https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${API_KEY}&format=json`,
-  );
+  if (!res.ok) throw new Error(`Failed to fetch charts`);
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch albums");
-  }
+  const data = await res.json();
+  console.log(data);
 
-  const data = await response.json();
-  const charts = data.tracks.track;
-
-  console.log(charts);
-  return charts;
+  return data;
 }
-
-export default getAlbums;
