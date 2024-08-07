@@ -11,7 +11,7 @@ import Home from "./pages/Home";
 import Library from "./pages/Library";
 import Playlists from "./pages/Playlists";
 import Playlist from "./pages/Playlist";
-import Search from "./pages/Search";
+import SearchPage from "./pages/SearchPage";
 import UserProfile from "./pages/UserProfile";
 import Login from "./pages/Login";
 import ErrorPage from "./pages/ErrorPage";
@@ -41,7 +41,7 @@ function App() {
             <Route path="library" element={<Library />} />
             <Route path="playlists" element={<Playlists />} />
             <Route path="playlists/:playlistId" element={<Playlist />} />
-            <Route path="search" element={<Search />} />
+            <Route path="search" element={<SearchPage />} />
             <Route path="profile" element={<UserProfile />} />
           </Route>
 
