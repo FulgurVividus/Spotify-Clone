@@ -35,7 +35,7 @@ function HomeHeader() {
           </div>
 
           {/* account button */}
-          <div className="z-50 rounded-full bg-black p-1 duration-300 hover:scale-105">
+          <div className="z-50 rounded-full bg-black p-1 opacity-75 duration-300 hover:scale-105">
             <button
               className="rounded-full bg-green-700 pb-1 pl-2 pr-2 pt-1 text-sm font-bold"
               onClick={() => navigate("/profile")}
