@@ -15,7 +15,7 @@ function Search() {
         <input
           type="search"
           placeholder="What do you want to listen to ?"
-          className="w-full max-w-md rounded-3xl border-none p-3 pl-4 text-black outline-none"
+          className="w-full max-w-md rounded-3xl border-none bg-neutral-700 p-3 pl-4 text-white outline-none focus:ring focus:ring-white"
           ref={inputEl}
         />
       </form>
