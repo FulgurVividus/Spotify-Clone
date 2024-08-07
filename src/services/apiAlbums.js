@@ -1,7 +1,18 @@
-export async function getAlbums() {
-  const res = await fetch(`https://api.music.apple.com/v1/catalog/albums`);
+const PROXY_URL = `https://cors-anywhere.herokuapp.com`;
+const BASE_URL = `https://api.deezer.com`;
 
-  if (!res.ok) throw new Error(`Failed to fetch charts`);
+export async function getAlbums() {
+  const res = await fetch(`${PROXY_URL}/${BASE_URL}/album/302127`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    console.log(`Failed to fetch albums: ${res.status}`);
+    throw new Error(`Failed to fetch albums`);
+  }
 
   const data = await res.json();
   console.log(data);
