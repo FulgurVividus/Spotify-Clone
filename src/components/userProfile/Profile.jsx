@@ -1,4 +1,6 @@
 function Profile() {
+  // TODO: add functionality to log out
+
   return (
     <>
       <div>
