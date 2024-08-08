@@ -11,9 +11,9 @@ function AppLayout() {
         <Sidebar />
       </div>
 
-      <main className="flex w-full flex-col gap-10 rounded-lg bg-neutral-900 pb-2 pl-5 pr-5 pt-2">
+      <main className="flex w-full flex-col gap-10 overflow-y-auto rounded-lg bg-neutral-900 px-5 py-2">
         <HomeHeader />
-        <div className="pl-2 pr-2">
+        <div className="px-2">
           <Outlet />
         </div>
       </main>
