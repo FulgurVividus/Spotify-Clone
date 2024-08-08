@@ -1,13 +1,7 @@
-const PROXY_URL = `https://cors-anywhere.herokuapp.com`;
 const BASE_URL = `https://api.deezer.com`;
 
 export async function getAlbums() {
-  const res = await fetch(`${PROXY_URL}/${BASE_URL}/album/302127`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const res = await fetch(`${BASE_URL}/chart/albums`);
 
   if (!res.ok) {
     console.log(`Failed to fetch albums: ${res.status}`);
@@ -17,5 +11,5 @@ export async function getAlbums() {
   const data = await res.json();
   console.log(data);
 
-  return data;
+  return data.data;
 }
