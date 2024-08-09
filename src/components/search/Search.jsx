@@ -84,8 +84,6 @@ function Search() {
         setAlbums(data.items);
       })
       .finally(() => setIsLoading(false));
-
-    // Display those albums to the user
   }
 
   if (isLoading) return <Loader />;
@@ -108,11 +106,15 @@ function Search() {
         />
       </form>
 
-      <div className="flex flex-wrap justify-between gap-x-1 gap-y-5 md:gap-x-0">
-        {albums.map((album) => (
-          <SearchResultsItem key={album.id} album={album} />
-        ))}
-      </div>
+      {albums.length > 0 ? (
+        <div className="flex flex-wrap justify-between gap-x-1 gap-y-5 md:gap-x-0">
+          {albums.map((album) => (
+            <SearchResultsItem key={album.id} album={album} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm">No results yet.</p>
+      )}
     </>
   );
 }

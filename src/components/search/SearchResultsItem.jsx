@@ -1,7 +1,18 @@
+import { useNavigate } from "react-router-dom";
+
 function SearchResultsItem({ album }) {
+  const navigate = useNavigate();
+
+  function handleNavigate() {
+    navigate(`/search/${album.id}`, { state: { album } });
+  }
+
   return (
     <>
-      <div className="h-100 flex max-w-xs cursor-pointer flex-col rounded-lg bg-neutral-600 px-3 py-4 duration-300 hover:bg-green-700 hover:opacity-75">
+      <div
+        onClick={handleNavigate}
+        className="h-100 flex max-w-xs cursor-pointer flex-col rounded-xl bg-neutral-600 px-3 py-4 duration-300 hover:bg-green-700 hover:opacity-75"
+      >
         <div className="flex-grow overflow-hidden rounded-xl">
           <img
             src={album.images.at(1).url}
