@@ -108,7 +108,7 @@ function Search() {
         />
       </form>
 
-      <div className="flex flex-wrap justify-between gap-4">
+      <div className="flex flex-wrap justify-between gap-x-1 gap-y-5 md:gap-x-0">
         {albums.map((album) => (
           <SearchResultsItem key={album.id} album={album} />
         ))}
