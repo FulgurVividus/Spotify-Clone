@@ -1,8 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
 function CategoriesItem({ category }) {
-  const navigate = useNavigate();
-
   return (
     <>
       <div className="group flex flex-col gap-1">
