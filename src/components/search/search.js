@@ -30,17 +30,19 @@ async function search(searchInput) {
       },
     };
 
+    //
+
     const searchResponse = await fetch(
       `https://api.spotify.com/v1/search?q=${searchInput}&type=artist,track,album&market=US&limit=50`,
       searchParams,
     );
     const searchData = await searchResponse.json();
 
+    //
+
     const artistID = searchData.artists?.items?.at(0)?.id;
 
     if (!artistID) throw new Error("No artistID found");
-
-    // console.log(artistID);
 
     const albumResponse = await fetch(
       `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=50`,
