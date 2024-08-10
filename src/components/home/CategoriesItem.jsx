@@ -8,7 +8,7 @@ function CategoriesItem({ category }) {
         <img
           src={category.icons.at(0).url}
           alt={`Image of ${category.name}`}
-          className="rounded-full bg-center duration-300 group-hover:opacity-75"
+          className="select-none rounded-full bg-center duration-300 group-hover:opacity-75"
         />
       </div>
     </>
