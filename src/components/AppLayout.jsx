@@ -18,14 +18,17 @@ function AppLayout() {
   }
 
   return (
-    <div className="flex h-screen gap-4 p-4">
+    <div className="flex h-screen gap-4 p-1 md:p-4">
       <div className="hidden h-full w-auto flex-col gap-5 md:flex">
         <Header />
         <Sidebar />
       </div>
 
       {/*  */}
-      <div className="z-40 block md:hidden" onClick={handleSidebar}>
+      <div
+        className="absolute left-1 top-2 z-40 block md:hidden"
+        onClick={handleSidebar}
+      >
         {sidebar ? <IoClose size={20} /> : <IoMenu size={20} />}
       </div>
       <div
@@ -42,7 +45,7 @@ function AppLayout() {
         className={
           sidebar
             ? "hidden"
-            : "flex w-full flex-col gap-10 overflow-y-auto rounded-lg bg-neutral-900 px-5 py-2"
+            : "relative flex w-full flex-col gap-10 overflow-y-auto rounded-lg bg-neutral-900 px-5 py-2"
         }
       >
         <HomeHeader />
