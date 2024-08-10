@@ -1,34 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { CLIENT_ID, CLIENT_SECRET } from "../../services/config";
 import Loader from "../common/Loader";
 import SearchResultsItem from "./SearchResultsItem";
+import search from "./search";
 
 function Search() {
   // TODO: Add search functionality
   const [searchInput, setSearchInput] = useState("");
-  const [accessToken, setAccessToken] = useState("");
   const [albums, setAlbums] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const inputEl = useRef(null);
-
-  //# API access token
-  useEffect(function () {
-    // API Access Token
-    const authParams = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
-    };
-
-    fetch(`https://accounts.spotify.com/api/token`, authParams)
-      .then((result) => result.json())
-      .then((data) => setAccessToken(data.access_token))
-      .catch((error) => console.log(error));
-  }, []);
 
   //# autofocus on input
   useEffect(
@@ -41,49 +22,16 @@ function Search() {
   );
 
   //# keypress event
-  function handleKeyPress(e) {
+  async function handleKeyPress(e) {
     if (e.key === "Enter") {
-      search();
+      setIsLoading(true);
+
+      const data = await search(searchInput);
+      setAlbums(data.items || []);
       setSearchInput("");
+
+      setIsLoading(false);
     }
-  }
-
-  //# Search Function
-  async function search() {
-    setIsLoading(true);
-
-    // GET request using search to get the Artist ID
-    const searchParams = {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-    const artistID = await fetch(
-      `https://api.spotify.com/v1/search?q=${searchInput}&type=artist`,
-      searchParams,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        return data.artists.items.at(0).id;
-      })
-      .catch((error) => console.log(error));
-
-    // console.log(artistID);
-
-    // GET request Artist ID grab all the albums from that artist
-    const returnedAlbums = fetch(
-      `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=50`,
-      searchParams,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setAlbums(data.items);
-      })
-      .finally(() => setIsLoading(false));
   }
 
   if (isLoading) return <Loader />;
@@ -107,13 +55,17 @@ function Search() {
       </form>
 
       {albums.length > 0 ? (
-        <div className="flex flex-wrap justify-between gap-x-1 gap-y-5 md:gap-x-0">
-          {albums.map((album) => (
-            <SearchResultsItem key={album.id} album={album} />
-          ))}
+        <div>
+          <h1>Albums</h1>
+
+          <div className="flex flex-wrap justify-between gap-x-1 gap-y-5 md:gap-x-0">
+            {albums.map((album) => (
+              <SearchResultsItem key={album.id} album={album} />
+            ))}
+          </div>
         </div>
       ) : (
-        <p className="text-sm">No results yet.</p>
+        <p className="text-sm">No results yet, search.</p>
       )}
     </>
   );
