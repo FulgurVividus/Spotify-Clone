@@ -33,7 +33,9 @@ function AppLayout() {
       </div>
       <div
         className={
-          sidebar ? "flex h-full w-auto flex-col gap-5" : "fixed left-[-100%]"
+          sidebar
+            ? "flex h-full w-auto flex-col gap-5 md:hidden"
+            : "fixed left-[-100%]"
         }
       >
         <Header onCloseSidebar={handleCloseSidebar} />
