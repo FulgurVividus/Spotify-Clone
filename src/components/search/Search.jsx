@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Loader from "../common/Loader";
 import SearchResultsItem from "./SearchResultsItem";
-import search from "./search";
+import search from "../../services/search";
 
 function Search() {
   // TODO: Add search functionality

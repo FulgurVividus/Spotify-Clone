@@ -1,4 +1,4 @@
-import { CLIENT_SECRET, CLIENT_ID } from "../../services/config";
+import { CLIENT_SECRET, CLIENT_ID } from "./config";
 
 async function search(searchInput) {
   try {
