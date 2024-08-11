@@ -15,7 +15,6 @@ import SearchPage from "./pages/SearchPage";
 import UserProfile from "./pages/UserProfile";
 import Login from "./pages/Login";
 import ErrorPage from "./pages/ErrorPage";
-import SearchResultsItemDetails from "./components/search/SearchResultsItemDetails";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,10 +42,6 @@ function App() {
             <Route path="playlists" element={<Playlists />} />
             <Route path="playlists/:playlistId" element={<Playlist />} />
             <Route path="search" element={<SearchPage />} />
-            <Route
-              path="search/:searchId"
-              element={<SearchResultsItemDetails />}
-            />
             <Route path="profile" element={<UserProfile />} />
           </Route>
 
