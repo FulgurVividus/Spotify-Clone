@@ -33,7 +33,7 @@ async function search(searchInput) {
     //
 
     const searchResponse = await fetch(
-      `https://api.spotify.com/v1/search?q=${searchInput}&type=artist,track,album&market=US&limit=50&include_external=audio`,
+      `https://api.spotify.com/v1/search?q=${searchInput}&type=artist,track,album&market=ES&limit=50&include_external=audio`,
       searchParams,
     );
     const searchData = await searchResponse.json();
