@@ -1,18 +1,7 @@
-import { useNavigate } from "react-router-dom";
-
 function SearchResultsItem({ artistTrack }) {
-  const navigate = useNavigate();
-
-  function handleNavigate() {
-    navigate(`/search/${artistTrack.id}`, { state: { artistTrack } });
-  }
-
   return (
     <>
-      <div
-        onClick={handleNavigate}
-        className="flex max-w-full cursor-pointer rounded-xl bg-neutral-600 px-3 py-2 duration-300 hover:bg-green-700 hover:opacity-75"
-      >
+      <div className="flex max-w-full cursor-pointer items-center rounded-xl bg-neutral-600 px-3 py-2 duration-300 hover:bg-green-700 hover:opacity-75">
         <div className="flex-grow overflow-hidden rounded-full">
           <img
             src={artistTrack.album.images.at(2).url}

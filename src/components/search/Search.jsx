@@ -61,7 +61,7 @@ function Search() {
 
       {artistTopTracks.length > 0 ? (
         <div>
-          <h1 className="mb-10 font-semibold">Top Tracks</h1>
+          <h1 className="mb-10 font-semibold">Top Tracks of the artist</h1>
 
           <div className="mb-10 flex flex-col gap-y-5">
             {artistTopTracks.map((artistTrack) => (
