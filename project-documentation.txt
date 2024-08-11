@@ -8,20 +8,11 @@ Components: Search bar, search results list, filter options.
 3. Library Page
 Components: Tabs or sections for different categories (songs, albums, artists, playlists).
 
-4. Playlist Page
-Components: Playlist header (image, title, description), track list, play button.
-
-5. Album Page
-Components: Album header (image, title, artist), track list, play button.
-
-6. Artist Page
-Components: Artist header (image, name, bio), top tracks list, album list, related artists section.
-
-7. User Profile Page
+4. User Profile Page
 Components: Profile header (image, name, email), playlist list.
 
-8. Login Page
+5. Login Page
 Components: Form fields (email, password, etc.), submit button, error handling.
 
-9. Error Page
+6. Error Page
 Components: Error message, navigation link back to home or other relevant pages.
