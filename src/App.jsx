@@ -7,7 +7,6 @@ import Albums from "./pages/Albums";
 import Album from "./pages/Album";
 import Artists from "./pages/Artists";
 import Artist from "./pages/Artist";
-import Home from "./pages/Home";
 import Library from "./pages/Library";
 import Playlists from "./pages/Playlists";
 import Playlist from "./pages/Playlist";
@@ -32,12 +31,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="home" />} />
+            <Route index element={<Navigate replace to="search" />} />
             <Route path="albums" element={<Albums />} />
             <Route path="albums/:albumId" element={<Album />} />
             <Route path="artists" element={<Artists />} />
             <Route path="artists/:artistId" element={<Artist />} />
-            <Route path="home" element={<Home />} />
             <Route path="library" element={<Library />} />
             <Route path="playlists" element={<Playlists />} />
             <Route path="playlists/:playlistId" element={<Playlist />} />
