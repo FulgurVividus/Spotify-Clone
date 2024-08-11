@@ -20,5 +20,6 @@ module.exports = {
     "react/prop-types": "off",
     "no-unused-vars": "warn",
     "react/jsx-key": "warn",
+    "no-empty": ["warn", { allowEmptyCatch: false }],
   },
 };
