@@ -6,7 +6,8 @@ import search from "../../services/search";
 function Search() {
   // TODO: Add search functionality
   const [searchInput, setSearchInput] = useState("");
-  const [albums, setAlbums] = useState([]);
+  const [artistTopTracks, setArtistTopTracks] = useState([]);
+  const [tracks, setTracks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const inputEl = useRef(null);
@@ -26,10 +27,14 @@ function Search() {
     if (e.key === "Enter") {
       setIsLoading(true);
 
-      const data = await search(searchInput);
-      setAlbums(data.items || []);
-      setSearchInput("");
+      const { artistTracksData, trackData } = await search(searchInput);
+      console.log("artistTracksData", artistTracksData);
+      console.log("trackData", trackData);
 
+      setArtistTopTracks(artistTracksData.tracks || []);
+      setTracks(trackData?.tracks || []);
+
+      setSearchInput("");
       setIsLoading(false);
     }
   }
@@ -54,13 +59,16 @@ function Search() {
         />
       </form>
 
-      {albums.length > 0 ? (
+      {artistTopTracks.length > 0 ? (
         <div>
-          <h1>Albums</h1>
+          <h1 className="mb-10 font-semibold">Top Tracks</h1>
 
-          <div className="flex flex-wrap justify-between gap-x-1 gap-y-5 md:gap-x-0">
-            {albums.map((album) => (
-              <SearchResultsItem key={album.id} album={album} />
+          <div className="mb-10 flex flex-col gap-y-5">
+            {artistTopTracks.map((artistTrack) => (
+              <SearchResultsItem
+                key={artistTrack.id}
+                artistTrack={artistTrack}
+              />
             ))}
           </div>
         </div>

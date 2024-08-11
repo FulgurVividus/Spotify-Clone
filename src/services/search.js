@@ -33,29 +33,46 @@ async function search(searchInput) {
     //
 
     const searchResponse = await fetch(
-      `https://api.spotify.com/v1/search?q=${searchInput}&type=artist,track,album&market=US&limit=50`,
+      `https://api.spotify.com/v1/search?q=${searchInput}&type=artist,track,album&market=US&limit=50&include_external=audio`,
       searchParams,
     );
     const searchData = await searchResponse.json();
+    // console.log("searchData from search.js", searchData);
 
-    //
+    //# ARTIST
 
     const artistID = searchData.artists?.items?.at(0)?.id;
 
     if (!artistID) throw new Error("No artistID found");
 
-    const albumResponse = await fetch(
-      `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=50`,
+    const artistTracksResponse = await fetch(
+      `https://api.spotify.com/v1/artists/${artistID}/top-tracks`,
       searchParams,
     );
 
-    const albumData = await albumResponse.json();
-    console.log(albumData);
+    const artistTracksData = await artistTracksResponse.json();
+    console.log("artistData from search.js", artistTracksData);
 
-    return albumData;
+    //# TRACK
+
+    const trackID = searchData.tracks?.items?.at(0)?.id;
+
+    if (!trackID) throw new Error("No trackID found");
+
+    const trackResponse = await fetch(
+      `https://api.spotify.com/v1/tracks/${trackID}`,
+      searchParams,
+    );
+
+    const trackData = await trackResponse.json();
+    // console.log("trackData", trackData);
+
+    //
+
+    return { artistTracksData: artistTracksData, trackData: trackData };
   } catch (error) {
     console.error(`Error in search: ${error}`);
-    return { data: [] };
+    return { albumData: [], trackData: [] };
   }
 }
 
